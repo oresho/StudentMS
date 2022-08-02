@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl lg:text-6xl text-white">Login</h1>
+
+    {% csrf_token %}
+
+   {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.help_text }}
+           {{ field.label }}
+        {{ field }}
+       </div>
+    {% endfor %}
+<button>Submit</button>
+</form>
+{% endblock %}
