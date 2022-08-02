@@ -1,4 +1,3 @@
-from attr import fields
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import Student, Teacher, StudentProfile, TeacherProfile, Course, Subject
