@@ -34,12 +34,31 @@ class StudentManager(BaseUserManager):
         results = super().get_queryset(*args, **kwargs)
         return results.filter(role=User.Role.STUDENT)
 
+    # def create_user(self, email, date_of_birth, password=None):
+    #     """
+    #     Creates and saves a User with the given email, date of
+    #     birth and password.
+    #     """
+    #     if not email:
+    #         raise ValueError('Users must have an email address')
+    #     user = self.model(
+    #         email=self.normalize_email(email),
+    #         date_of_birth=date_of_birth,
+    #     )
+    #     user.set_password(password)
+    #     user.save(using=self._db)
+    #     return user
+
 
 class Student(User):
 
     base_role = User.Role.STUDENT
 
     student = StudentManager()
+
+    @property
+    def profile(self):
+        return StudentProfile.objects.get(student=self)
 
     class Meta:
         proxy = True
@@ -77,6 +96,10 @@ class Teacher(User):
 
     teacher = TeacherManager()
 
+    @property
+    def profile(self):
+        return self.teacherprofile
+
     class Meta:
         proxy = True
 
@@ -85,7 +108,7 @@ class Teacher(User):
 
 
 class TeacherProfile(models.Model):
-    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)
+    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE, related_name='teacherprofile')
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
 
