@@ -26,6 +26,5 @@ class TeacherAdmin(BaseUserAdmin):
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Teacher, TeacherAdmin)
-admin.site.register(StudentProfile)
 admin.site.register(Course)
 admin.site.register(Subject)
