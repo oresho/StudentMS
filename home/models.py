@@ -34,20 +34,6 @@ class StudentManager(BaseUserManager):
         results = super().get_queryset(*args, **kwargs)
         return results.filter(role=User.Role.STUDENT)
 
-    # def create_user(self, email, date_of_birth, password=None):
-    #     """
-    #     Creates and saves a User with the given email, date of
-    #     birth and password.
-    #     """
-    #     if not email:
-    #         raise ValueError('Users must have an email address')
-    #     user = self.model(
-    #         email=self.normalize_email(email),
-    #         date_of_birth=date_of_birth,
-    #     )
-    #     user.set_password(password)
-    #     user.save(using=self._db)
-    #     return user
 
 
 class Student(User):
@@ -73,8 +59,12 @@ def create_student_profile(sender, instance, created, **kwargs):
         StudentProfile.objects.create(student=instance)
 
 
+@receiver(post_save, sender=Student)
+def save_student_profile(sender, instance, **kwargs):
+    instance.studentprofile.save()
+
 class StudentProfile(models.Model):
-    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default="")
     surname = models.CharField(max_length=100, blank=True)
     age = models.IntegerField(null=True)
@@ -82,7 +72,6 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.student.username
-
 
 class TeacherManager(BaseUserManager):
     def get_queryset(self, *args, **kwargs):
@@ -103,12 +92,9 @@ class Teacher(User):
     class Meta:
         proxy = True
 
-    def welcome(self):
-        return "Only for teachers"
-
 
 class TeacherProfile(models.Model):
-    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE, related_name='teacherprofile')
+    teacher = models.OneToOneField(Teacher, primary_key=True, on_delete=models.CASCADE, related_name='teacherprofile')
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
 
@@ -120,6 +106,11 @@ class TeacherProfile(models.Model):
 def create_student_profile(sender, instance, created, **kwargs):
     if created and instance.role == User.Role.TEACHER:
         TeacherProfile.objects.create(teacher=instance)
+
+
+@receiver(post_save, sender=Teacher)
+def save_teacher_profile(sender, instance, **kwargs):
+    instance.teacherprofile.save()
 
 
 class Subject(models.Model):
