@@ -29,7 +29,7 @@
 - [Built Using](#built_using)
 - [TODO](../TODO.md)
 - [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
+- [Authors](#contributors)
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
@@ -80,13 +80,13 @@ Additional notes about how to deploy would be available soon
 - [Django](https://www.djangoproject.com/) - Backend Framework
 - [SQLite](https://www.sqlite.org/) - Database(for now)
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ Contributors <a name = "contributors"></a>
 
 - [@oresho](https://github.com/oresho)
 - [@Chibuoyimm](https://github.com/Chibuoyimm)
 - [@eriteria](https://github.com/eriteria)
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/oresho/StudentMS/graphs/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
