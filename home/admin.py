@@ -8,4 +8,3 @@ admin.site.register(StudentProfile)
 admin.site.register(TeacherProfile)
 admin.site.register(Course)
 admin.site.register(Subject)
-

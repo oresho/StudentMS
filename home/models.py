@@ -47,6 +47,7 @@ class Student(User):
     def welcome(self):
         return "Only for students"
 
+
 @receiver(post_save, sender=Student)
 def create_student_profile(sender, instance, created, **kwargs):
     if created and instance.role == User.Role.STUDENT:
@@ -58,7 +59,7 @@ class StudentProfile(models.Model):
     name = models.CharField(max_length=100, default="")
     surname = models.CharField(max_length=100, blank=True)
     age = models.IntegerField(null=True)
-    course = models.ForeignKey('course', on_delete=models.SET_NULL, null=True)
+    course = models.ForeignKey("course", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.student.username
@@ -91,6 +92,7 @@ class TeacherProfile(models.Model):
     def __str__(self):
         return self.teacher.username
 
+
 @receiver(post_save, sender=Teacher)
 def create_student_profile(sender, instance, created, **kwargs):
     if created and instance.role == User.Role.TEACHER:
@@ -100,12 +102,14 @@ def create_student_profile(sender, instance, created, **kwargs):
 class Subject(models.Model):
     name = models.CharField(max_length=100)
     teacher = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE)
-    course = models.ForeignKey('course', on_delete=models.CASCADE)
+    course = models.ForeignKey("course", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
+
 class Course(models.Model):
     name = models.CharField(max_length=100)
+
     def __str__(self):
         return self.name
