@@ -35,7 +35,6 @@ class StudentManager(BaseUserManager):
         return results.filter(role=User.Role.STUDENT)
 
 
-
 class Student(User):
 
     base_role = User.Role.STUDENT
@@ -63,6 +62,7 @@ def create_student_profile(sender, instance, created, **kwargs):
 def save_student_profile(sender, instance, **kwargs):
     instance.studentprofile.save()
 
+
 class StudentProfile(models.Model):
     student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default="")
@@ -72,6 +72,7 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.student.username
+
 
 class TeacherManager(BaseUserManager):
     def get_queryset(self, *args, **kwargs):
@@ -94,7 +95,12 @@ class Teacher(User):
 
 
 class TeacherProfile(models.Model):
-    teacher = models.OneToOneField(Teacher, primary_key=True, on_delete=models.CASCADE, related_name='teacherprofile')
+    teacher = models.OneToOneField(
+        Teacher,
+        primary_key=True,
+        on_delete=models.CASCADE,
+        related_name="teacherprofile",
+    )
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
 
