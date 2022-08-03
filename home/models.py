@@ -26,7 +26,14 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.role = self.base_role
-            return super().save(*args, **kwargs)
+            return super().save(*args, **kwargs)    @property
+    def profile(self):
+        if self.role == User.Role.STUDENT:
+            return self.studentprofile
+        if self.role == User.Role.TEACHER:
+            return self.teacherprofile
+
+    
 
 
 class StudentManager(BaseUserManager):
@@ -64,11 +71,12 @@ def save_student_profile(sender, instance, **kwargs):
 
 
 class StudentProfile(models.Model):
-    student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
+    student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE, related_name="studentprofile")
     name = models.CharField(max_length=100, default="")
     surname = models.CharField(max_length=100, blank=True)
     age = models.IntegerField(null=True)
-    course = models.ForeignKey("course", on_delete=models.SET_NULL, null=True)
+    program = models.CharField(max_length=100, blank=True)
+    course = models.ManyToManyField('course', blank=True, related_name="students")
 
     def __str__(self):
         return self.student.username
@@ -103,6 +111,7 @@ class TeacherProfile(models.Model):
     )
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
+    course = models.ManyToManyField('course', blank=True, related_name='teachers')
 
     def __str__(self):
         return self.teacher.username
@@ -118,18 +127,12 @@ def create_student_profile(sender, instance, created, **kwargs):
 def save_teacher_profile(sender, instance, **kwargs):
     instance.teacherprofile.save()
 
-
-class Subject(models.Model):
-    name = models.CharField(max_length=100)
-    teacher = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE)
-    course = models.ForeignKey("course", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
+# TODO change subject to course
 
 
 class Course(models.Model):
     name = models.CharField(max_length=100)
+    course_code = models.CharField(max_length=20, null=True)
 
     def __str__(self):
         return self.name
