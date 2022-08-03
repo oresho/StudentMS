@@ -8,9 +8,9 @@
 <div align="center">
 
 [![Django CI](https://github.com/oresho/StudentMS/actions/workflows/django.yml/badge.svg)](https://github.com/oresho/StudentMS/actions/workflows/django.yml)
-<!-- [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE) --> -->
+![GitHub contributors](https://img.shields.io/github/contributors/oresho/StudentMS)
+![GitHub last commit](https://img.shields.io/github/last-commit/oresho/StudentMS)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/oresho/StudentMS)
 
 </div>
 
