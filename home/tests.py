@@ -1,5 +1,13 @@
 from django.test import TestCase
-from .models import Student, StudentProfile, Teacher, TeacherProfile, Course, Subject, User
+from .models import (
+    Student,
+    StudentProfile,
+    Teacher,
+    TeacherProfile,
+    Course,
+    Subject,
+    User,
+)
 
 
 class TestCreateStudent(TestCase):
@@ -35,7 +43,7 @@ class TestCreateStudent(TestCase):
         self.assertEqual(test_student.welcome(), "Only for students")
         self.assertEqual(test_student_profile.name, "")
         self.assertEqual(test_student_profile.surname, "")
-        
+
         # Teacher
         test_teacher = Teacher.teacher.get(id=2)
         test_teacher_profile = TeacherProfile.objects.get(teacher=test_teacher)

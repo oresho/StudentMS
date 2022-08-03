@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import Student, Teacher, StudentProfile, TeacherProfile, Course
 
+
 class StudentInline(admin.StackedInline):
     model = StudentProfile
     can_delete = False
