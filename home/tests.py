@@ -5,7 +5,6 @@ from .models import (
     Teacher,
     TeacherProfile,
     Course,
-    Subject,
     User,
 )
 
@@ -26,14 +25,6 @@ class TestCreateStudent(TestCase):
             last_name="Doe",
             email="a@a.com",
             password="password",
-        )
-        test_course = Course.objects.create(
-            name="Test Course",
-        )
-        test_subject = Subject.objects.create(
-            name="Test Subject",
-            course=test_course,
-            teacher=test_teacher.teacherprofile,
         )
 
     def test_student_profile_creation(self):
