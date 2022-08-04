@@ -1,0 +1,53 @@
+.bg-central {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab,#3366a5, #222227);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.col-5 {
+    background: rgba(140, 140, 140, 0.13);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    height: 100vh;
+}
+.col-7 {
+    background: linear-gradient(-45deg,#222227, #3366a5);
+    background-size: cover;
+    height: 100vh;
+}
+.col-5 span {
+    margin-right: 10px;
+}
+.col-5 p {
+    color: #fff;
+}
+.col-5 h1 {
+    color: #fff;
+}
+.col-7 h1 {
+    color: #fff;
+}
+.col-7 p {
+    color: #fff;
+}
+
+.elemcontainer{
+    width: fit-content;
+}
+
+.caro{
+    /* padding-top: 100px; */
+    object-fit: contain;
+}
