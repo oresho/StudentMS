@@ -1,0 +1,91 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.body{
+    float: left;
+    display: flex;
+    align-items: center;
+}
+.container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.image{
+    height: 100%;
+    width: 50%;
+}
+.image img{
+    width:100%;
+    height: 100%;
+}
+.formdiv{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    align-items: center;
+    width: 350px;
+    height: 500px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 5px gainsboro;
+}
+.field-items{
+    padding-left: 75px;
+    padding-right: 75px;
+}
+input{
+    border: .5px solid white;
+    outline: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    padding-left: 20px;
+    box-shadow: 1px 3px 1px 1px gainsboro;
+    font-size: 20px;
+}
+input:focus::placeholder {
+    color: transparent; /*this will take out the placeholder when the input is clicked on*/
+  }
+.name{
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+.email,.conpass,.pass{
+    padding-bottom: 30px;
+}
+.login-btn{
+    padding-left: 135px;
+    padding-right: 135px;
+}
+.btn{
+    background-color: #B8130F;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 1px solid #B8130F;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@media screen and (max-width:767px){
+    .formdiv{
+        width: 100%;
+    }
+    .image{
+        display: none;
+    }
+
+}
+
+/*@media screen and (max-width: 1200px) and (max-width: 767px) {
+    body{
+        background-color: none; /*what this does is to change the background of the webpage to green when the width of the webpage is getting to the limit set above by the media query "max-width:1920px"*/
+    /*}
+}*/
