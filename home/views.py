@@ -52,3 +52,7 @@ def signup(request):
 
     else:
         return render(request, "home/signup.html")
+
+
+def logout(request):
+    return auth_views.logout(request)
