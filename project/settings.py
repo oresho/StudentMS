@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "home",
     "rest_framework",
     "api",
+    "student",
+    "teacher",
 ]
 
 

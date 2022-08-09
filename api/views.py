@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from home.models import Student
+from student.models import Student
 from .serializers import StudentSerializer
 
 
